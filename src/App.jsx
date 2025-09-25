@@ -1,7 +1,7 @@
 import { SiTiktok, SiInstagram, SiSoundcloud } from "react-icons/si";
 import "./App.css";
 import TrackCard from "./commponents/TrackCard";
-import Gallery from "./commponents/gallery";
+import Gallery from "./commponents/Gallery";
 import Tiktok from "./commponents/Tiktok";
 import LetsTalk from "./commponents/LetsTalk";
 import Press from "./commponents/Press";
