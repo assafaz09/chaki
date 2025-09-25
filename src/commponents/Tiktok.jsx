@@ -1,11 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 export default function Tiktok({ videos = [] }) {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isScrolling, setIsScrolling] = useState(false);
   const videoRefs = useRef([]);
+  const scrollTimeout = useRef(null);
 
   // Default videos if none provided
   const defaultVideos = [
@@ -25,10 +27,14 @@ export default function Tiktok({ videos = [] }) {
   const handleTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientY);
+    // Prevent page scrolling when touching the video section
+    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientY);
+    // Prevent page scrolling during touch move
+    e.preventDefault();
   };
 
   const handleTouchEnd = () => {
@@ -71,8 +77,52 @@ export default function Tiktok({ videos = [] }) {
     setIsPlaying(false);
   }, [currentVideoIndex]);
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+    };
+  }, []);
+
+  // Handle mouse wheel scrolling with debouncing
+  const handleWheel = useCallback(
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // If already scrolling, ignore additional wheel events
+      if (isScrolling) return;
+
+      const delta = e.deltaY;
+      if (Math.abs(delta) < 50) return; // Ignore small wheel movements
+
+      setIsScrolling(true);
+
+      if (delta > 0 && currentVideoIndex < videoList.length - 1) {
+        // Scroll down - next video
+        setCurrentVideoIndex((prev) => prev + 1);
+        setIsPlaying(false);
+      } else if (delta < 0 && currentVideoIndex > 0) {
+        // Scroll up - previous video
+        setCurrentVideoIndex((prev) => prev - 1);
+        setIsPlaying(false);
+      }
+
+      // Reset scrolling flag after animation completes
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+      scrollTimeout.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 300); // Match the CSS transition duration
+    },
+    [currentVideoIndex, videoList.length, isScrolling]
+  );
+
   return (
-    <div className="w-full h-150 overflow-hidden bg-black relative">
+    <div className="w-full h-[600px] overflow-hidden bg-black relative touch-none">
       {/* Scroll Indicator */}
 
       {/* Swipe Hint */}
@@ -90,6 +140,7 @@ export default function Tiktok({ videos = [] }) {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onWheel={handleWheel}
       >
         <div
           className="flex flex-col h-full transition-transform duration-300 ease-out"
