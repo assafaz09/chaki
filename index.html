@@ -80,6 +80,14 @@
     <link rel="preconnect" href="https://music.apple.com" />
     <link rel="preconnect" href="https://music.youtube.com" />
 
+    <!-- DNS prefetch for additional performance -->
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://sample-videos.com" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <link rel="preload" href="/src/App.css" as="style" />
+
     <!-- Structured Data for Music -->
     <script type="application/ld+json">
       {

@@ -148,7 +148,6 @@ export default function Press({ images = [] }) {
 
         <div className="relative">
           {/* Dynamic Scroll Hint */}
-         
 
           {/* Touch/Swipe Container */}
           <div

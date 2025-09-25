@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SiTiktok, SiInstagram, SiSoundcloud } from "react-icons/si";
 import "./App.css";
 import TrackCard from "./commponents/TrackCard";
@@ -6,11 +7,22 @@ import Tiktok from "./commponents/Tiktok";
 import LetsTalk from "./commponents/LetsTalk";
 import Press from "./commponents/Press";
 import AnimatedSection from "./commponents/AnimatedSection";
+import LoadingScreen from "./commponents/LoadingScreen";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+  }
+
   return (
     <>
-      <div className="relative min-h-screen ">
+      <div className="relative min-h-screen animate-fadeIn">
         <AnimatedSection direction="scale" delay={0}>
           <div className="relative inline-block mx-auto">
             <img
@@ -22,11 +34,15 @@ function App() {
                  [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%] top-0 
                w-[clamp(350px,40vw,400px)] 
                mt-4"
-              src="https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png"
+              src="https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_auto,dpr_auto/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png"
               alt="chaki main pic"
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
             />
-            <h1 className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+            <h1
+              style={{ fontSize: "35px" }}
+              className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]"
+            >
               CHAKI
             </h1>
           </div>
@@ -82,7 +98,7 @@ function App() {
             <TrackCard
               track={{
                 coverSrc:
-                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_300,c_fill/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png",
                 title: "",
                 artists: "CHAKI",
                 platforms: {
@@ -113,14 +129,14 @@ function App() {
           <div className="mt-12 ">
             <Gallery
               images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448652/IMG_2982_f4actr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448628/IMG_6872_xp0l5p.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448644/IMG_6878_haqugn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448637/IMG_6882_hwon3z.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448648/IMG_2992_nmahzj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448627/IMG_6875_xr41w5.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448655/IMG_2991_eumyny.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758448633/IMG_7660_bjew3t.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448652/IMG_2982_f4actr.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448628/IMG_6872_xp0l5p.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448644/IMG_6878_haqugn.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448637/IMG_6882_hwon3z.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448648/IMG_2992_nmahzj.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448627/IMG_6875_xr41w5.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448655/IMG_2991_eumyny.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448633/IMG_7660_bjew3t.jpg",
               ]}
             />
           </div>
@@ -130,7 +146,7 @@ function App() {
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-12">
             <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              Shows
+              Moments
             </h2>
             <br />
 
@@ -152,14 +168,14 @@ function App() {
           <div className="mt-12 ">
             <Press
               images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451316/IMG_3028_zk3pud.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451313/IMG_2967_urtled.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451302/IMG_6888_flfivn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451298/IMG_2961_r63yar.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451296/IMG_6914_mztdfj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451330/IMG_3042_d7khnr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451320/IMG_3041_vvryao.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451327/IMG_3045_i8pqv4.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451316/IMG_3028_zk3pud.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451313/IMG_2967_urtled.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451302/IMG_6888_flfivn.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451298/IMG_2961_r63yar.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451296/IMG_6914_mztdfj.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451330/IMG_3042_d7khnr.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451320/IMG_3041_vvryao.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451327/IMG_3045_i8pqv4.jpg",
               ]}
             />
           </div>
