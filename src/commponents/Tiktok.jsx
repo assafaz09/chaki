@@ -89,7 +89,6 @@ export default function Tiktok({ videos = [] }) {
   // Handle mouse wheel scrolling with debouncing
   const handleWheel = useCallback(
     (e) => {
-      e.preventDefault();
       e.stopPropagation();
 
       // If already scrolling, ignore additional wheel events

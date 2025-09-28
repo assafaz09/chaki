@@ -78,7 +78,7 @@ export default function Gallery({ images = [] }) {
   return (
     <div className="w-full max-w-4xl mx-auto px-4">
       <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
-       Press
+        Press
       </h2>
 
       <div className="relative">
@@ -131,33 +131,24 @@ export default function Gallery({ images = [] }) {
         {/* Fullscreen Modal */}
         {fullscreenImage && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
             onClick={closeFullscreen}
           >
-            <div className="relative max-w-4xl max-h-[90vh] p-4">
+            <div className="relative max-w-4xl w-full max-h-[90vh] p-4 flex items-center justify-center">
               <img
                 src={fullscreenImage}
-                alt="Full size gallery image"
-                className="max-w-full max-h-full object-contain rounded-lg"
+                alt="Full size press image"
+                className="max-w-full max-h-[80vh] object-contain rounded-lg"
               />
               <button
-                onClick={closeFullscreen}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-                aria-label="Close fullscreen"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeFullscreen();
+                }}
+                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white text-3xl hover:bg-black/90 transition-colors"
+                aria-label="סגור תמונה"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                ✖
               </button>
             </div>
           </div>

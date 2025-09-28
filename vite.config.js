@@ -45,6 +45,7 @@ export default defineConfig({
     hmr: {
       overlay: false,
     },
+    port: 5174,
   },
 
   // Optimize dependencies
