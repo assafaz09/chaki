@@ -1,3 +1,4 @@
+
 // src/components/CloudinaryImage.jsx
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage } from '@cloudinary/react';

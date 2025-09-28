@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SiSpotify, SiApplemusic, SiYoutubemusic } from "react-icons/si";
+import { SiSpotify, SiApplemusic, SiYoutubemusic, SiSoundcloud, SiBeatport} from "react-icons/si";
 
 // Reusable track card component that accepts track data as props
 // Usage:
@@ -162,6 +162,16 @@ export default function TrackCard({ track, onPlay }) {
                 icon={<SiYoutubemusic className="text-[#FF0000]" size={20} />}
                 label="YouTube Music"
                 href={track.platforms?.youtubeMusic}
+              />
+              <Row
+                icon={<SiSoundcloud className="text-[#FF5500]" size={20} />}
+                label="SoundCloud"
+                href={track.platforms?.soundcloud}
+              />
+              <Row
+                icon={<SiBeatport className="text-[#FF5500]" size={20} />}
+                label="Beatport"
+                href={track.platforms?.beatport}
               />
             </div>
           </div>

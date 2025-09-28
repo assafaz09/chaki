@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SiTiktok, SiInstagram, SiSoundcloud } from "react-icons/si";
+import { SiTiktok, SiInstagram, SiSoundcloud, SiSpotify } from "react-icons/si";
 import "./App.css";
 import TrackCard from "./commponents/TrackCard";
 import Gallery from "./commponents/Gallery";
@@ -8,6 +8,7 @@ import LetsTalk from "./commponents/LetsTalk";
 import Press from "./commponents/Press";
 import AnimatedSection from "./commponents/AnimatedSection";
 import LoadingScreen from "./commponents/LoadingScreen";
+import Footer from "./commponents/Footer";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +21,11 @@ function App() {
     return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
   }
 
+  
+
   return (
     <>
-      <div className="relative min-h-screen animate-fadeIn">
+      <div className="relative min-h-screen animate-fadeIn ">
         <AnimatedSection direction="scale" delay={0}>
           <div className="relative inline-block mx-auto">
             <img
@@ -48,27 +51,34 @@ function App() {
           </div>
         </AnimatedSection>
         <AnimatedSection direction="up" delay={200}>
-          <div className="flex flex-row justify-center gap-5 mt-10px">
+          <div className="flex flex-row justify-center gap-10 mt-10px">
             <a
               aria-label="Instagram"
-              href="https://instagram.com/your"
+              href="https://www.instagram.com/_onlychaki_/"
               className="text-black"
             >
               <SiInstagram size={28} className="text-black" />
             </a>
             <a
               aria-label="TikTok"
-              href="https://tiktok.com/@your"
+              href="https://www.tiktok.com/@noam_zada?_t=ZS-8y1jaflWN9s&_r=1"
               className="text-black"
             >
               <SiTiktok size={28} className="text-black" />
             </a>
             <a
               aria-label="SoundCloud"
-              href="https://soundcloud.com/your"
+              href="https://soundcloud.com/chaki-901233941"
               className="text-black"
             >
               <SiSoundcloud size={28} className="text-black" />
+            </a>
+            <a
+              aria-label="Spotify"
+              href="https://open.spotify.com/artist/0mGKtM0f3dBqrrz9m9aZHR"
+              className="text-black"
+            >
+              <SiSpotify size={28} className="text-black" />
             </a>
           </div>
         </AnimatedSection>
@@ -92,35 +102,49 @@ function App() {
         {/* Track Cards Section */}
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-8 space-y-4 px-4">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Latest Releases
             </h2>
             <TrackCard
               track={{
                 coverSrc:
-                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_300,c_fill/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png",
-                title: "",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759058600/LACOSITA_owmjsw.jpg",
+                title: "LACOSITA",
                 artists: "CHAKI",
                 platforms: {
-                  spotify: "https://open.spotify.com/track/example1",
-                  appleMusic: "https://music.apple.com/example1",
-                  youtubeMusic: "https://music.youtube.com/watch?v=example1",
+                  spotify:
+                    "https://open.spotify.com/track/1TvbM3eWXpAsj7FOmC0fP7?si=n-Ur_VpfTFajfCz2-eAkhg&context=spotify%3Aalbum%3A0UiuUN4359mCE1kYnAzkCH",
+                  appleMusic:
+                    "https://music.apple.com/il/album/lacosita/1838472762?i=1838472764&l=he",
+                  youtubeMusic:
+                    "https://youtu.be/xugPUIMirH0?si=vT9IJfpj0XUkJIQZ",
+                  soundcloud: "https://on.soundcloud.com/GeOk24GNGdJBsDN2jT",
+                  beatport: "https://www.beatport.com/release/lacosita/5363299",
                 },
               }}
             />
-            <TrackCard
-              track={{
-                coverSrc:
-                  "https://res.cloudinary.com/demo/image/upload/f_auto,q_auto,w_128/sample.jpg",
-                title: "Another Track",
-                artists: "CHAKI",
-                platforms: {
-                  spotify: "https://open.spotify.com/track/example2",
-                  appleMusic: "",
-                  youtubeMusic: "https://music.youtube.com/watch?v=example2",
-                },
-              }}
-            />
+            <br />
+
+            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+              Coming Soon...
+            </h2>
+            <div className="relative opacity-60 pointer-events-none select-none">
+              <TrackCard
+                track={{
+                  coverSrc:
+                    "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759059843/chaki_treack_herjse.jpg",
+                  title: "CHAKI, Cafe de anatolia - drumline",
+                  artists: "",
+                  platforms: {
+                    spotify: "https://open.spotify.com/track/example2",
+                    appleMusic: "",
+                    youtubeMusic: "https://music.youtube.com/watch?v=example2",
+                    soundcloud: "https://soundcloud.com/example2",
+                    beatport: "https://www.beatport.com/track/example2/1234567",
+                  },
+                }}
+              />
+            </div>
           </div>
         </AnimatedSection>
 
@@ -145,7 +169,7 @@ function App() {
         {/* TikTok Videos Section */}
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-12">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Moments
             </h2>
             <br />
@@ -158,8 +182,8 @@ function App() {
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_40mb.mp4",
-                "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
+                // "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_40mb.mp4",
+                // "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
               ]}
             />
           </div>
@@ -188,6 +212,7 @@ function App() {
           </div>
         </AnimatedSection>
       </div>
+      <Footer />
     </>
   );
 }

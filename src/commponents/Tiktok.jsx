@@ -122,7 +122,7 @@ export default function Tiktok({ videos = [] }) {
   );
 
   return (
-    <div className="w-full h-[600px] overflow-hidden bg-black relative touch-none">
+    <div className="w-full h-[700px] overflow-hidden bg-black relative touch-none">
       {/* Scroll Indicator */}
 
       {/* Swipe Hint */}

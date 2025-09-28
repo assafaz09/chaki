@@ -35,11 +35,11 @@ const LoadingScreen = ({ onLoadingComplete }) => {
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <div className="text-center">
         {/* Main Image */}
-        <div className="mb-8">
+        <div className="mb-8 ">
           <img
-            src="https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_300,c_fill/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png"
+            src="https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759079734/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_9_vl48li.png"
             alt="CHAKI Loading"
-            className="w-48 h-48 mx-auto rounded-full object-cover animate-pulse"
+            className="w-72 h-72 mx-auto rounded-full object-cover animate-pulse"
           />
         </div>
 

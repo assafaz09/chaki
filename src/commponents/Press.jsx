@@ -33,7 +33,7 @@ export default function Press({ images = [] }) {
     if (isAutoPlaying && totalSlides > 1) {
       const interval = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % totalSlides);
-      }, 5000); // Change slide every 5 seconds (slower)
+      }, 6000); // Change slide every 5 seconds (slower)
       return () => clearInterval(interval);
     }
   }, [isAutoPlaying, totalSlides]);
@@ -205,41 +205,44 @@ export default function Press({ images = [] }) {
           </div>
         </div>
       </div>
+{/* Fullscreen Modal */}
+{fullscreenImage && (
+  <div
+    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Fullscreen image"
+    onClick={closeFullscreen}
+  >
+    <div
+      className="relative max-w-[min(96vw,1200px)] max-h-100 p-4"
+      onClick={(e) => e.stopPropagation()} // לא לסגור בלחיצה בתוך התוכן
+    >
+      <img
+        src={fullscreenImage}
+        alt="Full size press image"
+        className="max-w-full max-h-[92svh] object-contain rounded-lg"
+      />
 
-      {/* Fullscreen Modal */}
-      {fullscreenImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
-          onClick={closeFullscreen}
+      <button
+        type="button"
+        onClick={closeFullscreen}
+        className="absolute top-4 right-4 grid h-9 w-9 place-items-center rounded-full bg-black/60 text-white hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-label="Close fullscreen"
+      >
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
         >
-          <div className="relative max-w-4xl max-h-[90vh] p-4">
-            <img
-              src={fullscreenImage}
-              alt="Full size press image"
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
-            <button
-              onClick={closeFullscreen}
-              className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
-              aria-label="Close fullscreen"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      )}
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+)}
+
     </>
   );
 }
