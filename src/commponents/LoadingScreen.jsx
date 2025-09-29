@@ -34,14 +34,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
   return (
     <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
       <div className="text-center">
-        {/* Main Image */}
-        <div className="mb-8 ">
-          <img
-            src="https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759079734/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_9_vl48li.png"
-            alt="CHAKI Loading"
-            className="w-72 h-72 mx-auto rounded-full object-cover animate-pulse"
-          />
-        </div>
+    
 
         {/* CHAKI Text */}
         <h1 className="text-4xl font-bold text-white mb-8 animate-bounce">

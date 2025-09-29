@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState } from "react";
 import { SiTiktok, SiInstagram, SiSoundcloud, SiSpotify } from "react-icons/si";
 import "./App.css";
@@ -9,6 +10,7 @@ import Press from "./commponents/Press";
 import AnimatedSection from "./commponents/AnimatedSection";
 import LoadingScreen from "./commponents/LoadingScreen";
 import Footer from "./commponents/Footer";
+import InfiniteCarousel from "./commponents/InfiniteCarousel";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -144,9 +146,10 @@ function App() {
         </AnimatedSection>
 
         {/* Gallery Section */}
+
         <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 ">
-            <Gallery
+          <div className="mt-12 w-full max-w-4xl mx-auto px-4">
+            <InfiniteCarousel
               images={[
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448652/IMG_2982_f4actr.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448628/IMG_6872_xp0l5p.jpg",
@@ -157,6 +160,8 @@ function App() {
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448655/IMG_2991_eumyny.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448633/IMG_7660_bjew3t.jpg",
               ]}
+              speed={15}
+              pauseOnHover={true}
             />
           </div>
         </AnimatedSection>
@@ -171,13 +176,13 @@ function App() {
 
             <Tiktok
               videos={[
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450465/IMG_9009_mj3x6i.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                // "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_40mb.mp4",
                 // "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
               ]}
             />
@@ -185,7 +190,9 @@ function App() {
         </AnimatedSection>
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-12 ">
-            <Press
+            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">New module</h2>
+            <br />
+            <InfiniteCarousel
               images={[
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451316/IMG_3028_zk3pud.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451313/IMG_2967_urtled.jpg",
@@ -196,8 +203,12 @@ function App() {
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451320/IMG_3041_vvryao.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451327/IMG_3045_i8pqv4.jpg",
               ]}
+              speed={30}
+              pauseOnHover={true}
             />
           </div>
+          <br />
+          <br />
         </AnimatedSection>
 
         {/* Contact Form Section */}
