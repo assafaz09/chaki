@@ -151,14 +151,14 @@ function App() {
           <div className="mt-12 w-full max-w-4xl mx-auto px-4">
             <InfiniteCarousel
               images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448652/IMG_2982_f4actr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448628/IMG_6872_xp0l5p.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448644/IMG_6878_haqugn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448637/IMG_6882_hwon3z.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448648/IMG_2992_nmahzj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448627/IMG_6875_xr41w5.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448655/IMG_2991_eumyny.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758448633/IMG_7660_bjew3t.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448628/IMG_6872_xp0l5p.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448644/IMG_6878_haqugn.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448637/IMG_6882_hwon3z.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448648/IMG_2992_nmahzj.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448627/IMG_6875_xr41w5.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448655/IMG_2991_eumyny.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448633/IMG_7660_bjew3t.jpg",
               ]}
               speed={15}
               pauseOnHover={true}
@@ -176,32 +176,33 @@ function App() {
 
             <Tiktok
               videos={[
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450465/IMG_9009_mj3x6i.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                // "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1759147216/IMG_2077_cazoag.mp4",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450447/IMG_0547_zpcuus.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450455/IMG_0862_ujhivq.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450465/IMG_9009_mj3x6i.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450471/IMG_9552_fl1n0f.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450439/IMG_1242_qnusj3.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450840/IMG_9012_c9u9si.mov",
               ]}
             />
           </div>
         </AnimatedSection>
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-12 ">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">New module</h2>
+            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+              New module
+            </h2>
             <br />
             <InfiniteCarousel
               images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451316/IMG_3028_zk3pud.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451313/IMG_2967_urtled.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451302/IMG_6888_flfivn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451298/IMG_2961_r63yar.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451296/IMG_6914_mztdfj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451330/IMG_3042_d7khnr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451320/IMG_3041_vvryao.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_400,c_fill/v1758451327/IMG_3045_i8pqv4.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451313/IMG_2967_urtled.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451302/IMG_6888_flfivn.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451298/IMG_2961_r63yar.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451296/IMG_6914_mztdfj.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451330/IMG_3042_d7khnr.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451320/IMG_3041_vvryao.jpg",
+                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451327/IMG_3045_i8pqv4.jpg",
               ]}
               speed={30}
               pauseOnHover={true}

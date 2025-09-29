@@ -180,7 +180,7 @@ export default function InfiniteCarousel({
       role="region"
       aria-label="Image carousel (autoscroll)"
       className={`relative overflow-hidden w-full ${className}`}
-      style={{ touchAction: "pan-y" }}
+      style={{ touchAction: "pan-x" }} // גלילה אופקית בלבד
     >
       <div
         ref={contentRef}
