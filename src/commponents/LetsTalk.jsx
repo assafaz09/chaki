@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 
 export default function LetsTalk() {
   const [formData, setFormData] = useState({
@@ -20,19 +22,25 @@ export default function LetsTalk() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", phone: "", message: "" });
-    }, 3000);
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Failed to send message");
+      setIsSubmitted(true);
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", phone: "", message: "" });
+      }, 3000);
+    } catch (err) {
+      console.error(err);
+      alert("Sending failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

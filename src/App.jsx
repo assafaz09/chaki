@@ -198,7 +198,7 @@ function App() {
             <br />
             <InfiniteCarousel
               images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
+                // "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451313/IMG_2967_urtled.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451302/IMG_6888_flfivn.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451298/IMG_2961_r63yar.jpg",
