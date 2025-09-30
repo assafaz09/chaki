@@ -28,13 +28,11 @@ export default function Tiktok({ videos = [] }) {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientY);
     // Prevent page scrolling when touching the video section
-    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientY);
     // Prevent page scrolling during touch move
-    e.preventDefault();
   };
 
   const handleTouchEnd = () => {
@@ -55,25 +53,39 @@ export default function Tiktok({ videos = [] }) {
     }
   };
 
-  const togglePlay = () => {
-    const currentVideo = videoRefs.current[currentVideoIndex];
-    if (currentVideo) {
-      if (isPlaying) {
-        currentVideo.pause();
-      } else {
-        currentVideo.play();
+  // במקום setIsPlaying(!isPlaying) – נסמכים על onPlay/onPause
+  const togglePlay = async () => {
+    const v = videoRefs.current[currentVideoIndex];
+    if (!v) return;
+
+    if (v.paused) {
+      try {
+        // חכה ל-play כדי לא ליפול על Abort/NotAllowed
+        v.muted = false;
+        v.volume = 1.0;
+        const p = v.play();
+        if (p !== undefined) {
+          await p;
+        }
+        // אל תעשה setIsPlaying כאן – onPlay כבר יעדכן
+      } catch (err) {
+        console.warn("play() failed:", err);
       }
-      setIsPlaying(!isPlaying);
+    } else {
+      v.pause();
+      // אל תעשה setIsPlaying כאן – onPause כבר יעדכן
     }
   };
 
   // Pause all videos when switching
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (video && index !== currentVideoIndex) {
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i !== currentVideoIndex && !video.paused) {
         video.pause();
       }
     });
+    // ננקה את המצב — onPlay/onPause יעדכנו בהמשך
     setIsPlaying(false);
   }, [currentVideoIndex]);
 
@@ -121,7 +133,7 @@ export default function Tiktok({ videos = [] }) {
   );
 
   return (
-    <div className="w-full h-[600px] overflow-hidden bg-black relative touch-none">
+    <div className="w-full h-[600px] overflow-hidden bg-transparent relative touch-none">
       {/* Scroll Indicator */}
 
       {/* Swipe Hint */}
@@ -148,17 +160,21 @@ export default function Tiktok({ videos = [] }) {
           }}
         >
           {videoList.map((video, index) => (
-            <div key={index} className="w-full h-full flex-shrink-0 relative">
+            <div
+              key={index}
+              className="w-full h-full flex-shrink-0 relative rounded-2xl overflow-hidden"
+            >
               <video
                 ref={(el) => (videoRefs.current[index] = el)}
-                className="w-full h-full object-cover"
+                className="block w-full h-full object-cover"
                 muted={false}
                 loop
                 playsInline
+                preload="metadata"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               >
-                <source src={video} type="video/mp4" />
+                <source src={video} />
                 Your browser does not support the video tag.
               </video>
 

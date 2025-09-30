@@ -191,17 +191,39 @@ export default function InfiniteCarousel({
           willChange: "transform",
         }}
       >
-        {allImages.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            className="flex-shrink-0 h-40 w-auto object-cover rounded-lg cursor-pointer"
-            draggable={false}
-            loading="lazy"
-            onClick={() => setFullscreenImage(src)}
-          />
-        ))}
+        {allImages.map((src, i) => {
+          const lower = typeof src === "string" ? src.toLowerCase() : "";
+          const isVideo =
+            lower.endsWith(".mp4") ||
+            lower.endsWith(".mov") ||
+            lower.includes("/video/");
+          return (
+            <div
+              key={i}
+              className="flex-shrink-0 h-40 rounded-lg overflow-hidden cursor-pointer"
+              onClick={() => setFullscreenImage(src)}
+            >
+              {isVideo ? (
+                <video
+                  src={src}
+                  className="h-full w-auto object-cover block"
+                  muted
+                  loop
+                  playsInline
+                  autoPlay
+                />
+              ) : (
+                <img
+                  src={src}
+                  alt=""
+                  className="h-full w-auto object-cover block"
+                  draggable={false}
+                  loading="lazy"
+                />
+              )}
+            </div>
+          );
+        })}
       </div>
       {/* מודאל תמונה */}
       {fullscreenImage && (
@@ -210,11 +232,31 @@ export default function InfiniteCarousel({
           onClick={() => setFullscreenImage(null)}
         >
           <div className="relative max-w-4xl w-full max-h-[90vh] p-4 flex items-center justify-center">
-            <img
-              src={fullscreenImage}
-              alt="Full size carousel image"
-              className="max-w-full max-h-[80vh] object-contain rounded-lg"
-            />
+            {(() => {
+              const lower =
+                typeof fullscreenImage === "string"
+                  ? fullscreenImage.toLowerCase()
+                  : "";
+              const isVideo =
+                lower.endsWith(".mp4") ||
+                lower.endsWith(".mov") ||
+                lower.includes("/video/");
+              return isVideo ? (
+                <video
+                  src={fullscreenImage}
+                  className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                  controls
+                  autoPlay
+                  playsInline
+                />
+              ) : (
+                <img
+                  src={fullscreenImage}
+                  alt="Full size carousel image"
+                  className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                />
+              );
+            })()}
             <button
               onClick={(e) => {
                 e.stopPropagation();

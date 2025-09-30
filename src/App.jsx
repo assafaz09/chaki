@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { useState } from "react";
 import { SiTiktok, SiInstagram, SiSoundcloud, SiSpotify } from "react-icons/si";
 import "./App.css";
@@ -149,6 +148,10 @@ function App() {
 
         <AnimatedSection direction="up" delay={0}>
           <div className="mt-12 w-full max-w-4xl mx-auto px-4">
+            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+              Press
+            </h2>
+            <br />
             <InfiniteCarousel
               images={[
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
@@ -176,13 +179,13 @@ function App() {
 
             <Tiktok
               videos={[
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1759147216/IMG_2077_cazoag.mp4",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450447/IMG_0547_zpcuus.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450455/IMG_0862_ujhivq.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450465/IMG_9009_mj3x6i.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450471/IMG_9552_fl1n0f.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450439/IMG_1242_qnusj3.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450840/IMG_9012_c9u9si.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
+                // "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450840/IMG_9012_c9u9si.mov",
               ]}
             />
           </div>
