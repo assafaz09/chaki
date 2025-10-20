@@ -10,6 +10,7 @@ import AnimatedSection from "./commponents/AnimatedSection";
 import LoadingScreen from "./commponents/LoadingScreen";
 import Footer from "./commponents/Footer";
 import InfiniteCarousel from "./commponents/InfiniteCarousel";
+import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -121,39 +122,37 @@ function App() {
             />
             <br />
 
-            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              Coming Soon...
-            </h2>
-            <div className="relative opacity-60 pointer-events-none select-none">
-              <TrackCard
-                track={{
-                  coverSrc:
-                    "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759059843/chaki_treack_herjse.jpg",
-                  title: "CHAKI, Cafe de anatolia - drumline",
-                  artists: "",
-                  platforms: {
-                    spotify: "https://open.spotify.com/track/example2",
-                    appleMusic: "",
-                    youtubeMusic: "https://music.youtube.com/watch?v=example2",
-                    soundcloud: "https://soundcloud.com/example2",
-                    beatport: "https://www.beatport.com/track/example2/1234567",
-                  },
-                }}
-              />
-            </div>
+            <TrackCard
+              track={{
+                coverSrc:
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759059843/chaki_treack_herjse.jpg",
+                title: "CHAKI, Cafe de anatolia - drumline",
+                artists: "",
+                platforms: {
+                  spotify:
+                    "https://open.spotify.com/album/4gKWRg7ZAiRhd6v29foX4n?si=W9MANCDaRmqXGi2mJBSOeQ",
+                  appleMusic:
+                    "https://music.apple.com/il/album/drumline-single/1839479856?l=he",
+                  youtubeMusic:
+                    "https://youtu.be/s7_3CSB8rQQ?si=o5GTTgGWYgmYTy6D",
+                  soundcloud: "https://on.soundcloud.com/KYoJjFWfxZziRhw5jK",
+                  beatport:
+                    "https://beatport.com/release/drumline/5382961?utm_source=ios&utm_content=release&utm_medium=share",
+                },
+              }}
+            />
           </div>
         </AnimatedSection>
 
         {/* Gallery Section */}
-
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 w-full max-w-4xl mx-auto px-4">
-            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+         <AnimatedSection direction="up" delay={0}>
+          <div className="mt-12 ">
+            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Press
             </h2>
             <br />
             <InfiniteCarousel
-              images={[
+          images={[
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448628/IMG_6872_xp0l5p.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448644/IMG_6878_haqugn.jpg",
@@ -163,11 +162,14 @@ function App() {
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448655/IMG_2991_eumyny.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448633/IMG_7660_bjew3t.jpg",
               ]}
-              speed={15}
+              speed={20}
               pauseOnHover={true}
             />
           </div>
+          <br />
+          <br />
         </AnimatedSection>
+
 
         {/* TikTok Videos Section */}
         <AnimatedSection direction="up" delay={0}>
@@ -213,6 +215,24 @@ function App() {
           </div>
           <br />
           <br />
+        </AnimatedSection>
+
+        {/* Horizontal Video Section */}
+        <AnimatedSection direction="up" delay={0}>
+          <div className="mt-12">
+            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
+              Live Set
+            </h2>
+            <HorizontalVideoCarousel
+              videos={[
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965866/IMG_3693_cxo5z0.mov", // החלף עם כתובת הסרטון שלך
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4", // החלף עם כתובת הסרטון שלך
+                "VIDEO_URL_5", // החלף עם כתובת הסרטון שלך
+              ]}
+            />
+          </div>
         </AnimatedSection>
 
         {/* Contact Form Section */}
