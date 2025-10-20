@@ -145,14 +145,14 @@ function App() {
         </AnimatedSection>
 
         {/* Gallery Section */}
-         <AnimatedSection direction="up" delay={0}>
+        <AnimatedSection direction="up" delay={0}>
           <div className="mt-12 ">
             <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Press
             </h2>
             <br />
             <InfiniteCarousel
-          images={[
+              images={[
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448628/IMG_6872_xp0l5p.jpg",
                 "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448644/IMG_6878_haqugn.jpg",
@@ -169,7 +169,6 @@ function App() {
           <br />
           <br />
         </AnimatedSection>
-
 
         {/* TikTok Videos Section */}
         <AnimatedSection direction="up" delay={0}>
@@ -229,7 +228,8 @@ function App() {
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965866/IMG_3693_cxo5z0.mov", // החלף עם כתובת הסרטון שלך
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4", // החלף עם כתובת הסרטון שלך
-                "VIDEO_URL_5", // החלף עם כתובת הסרטון שלך
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760967244/IMG_3697_3_vqzfdm.mov",
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4",
               ]}
             />
           </div>
