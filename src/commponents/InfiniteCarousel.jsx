@@ -56,7 +56,7 @@ export default function InfiniteCarousel({
     function pause() {
       setPaused(true);
       clearTimeout(resumeTimeout.current);
-      resumeTimeout.current = setTimeout(() => setPaused(false), 20000);
+      resumeTimeout.current = setTimeout(() => setPaused(false), 400);
     }
     window.addEventListener("scroll", pause, { passive: true });
     window.addEventListener("wheel", pause, { passive: true });

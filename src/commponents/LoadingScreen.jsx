@@ -68,7 +68,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
         {/* Loading Text */}
         {showContent && (
           <p className="text-white/60 text-lg animate-pulse">
-            Loading amazing content...
+            Loading...
           </p>
         )}
       </div>

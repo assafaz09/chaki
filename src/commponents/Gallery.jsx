@@ -41,21 +41,6 @@ export default function Gallery({ images = [] }) {
   // עצור גלילה אוטומטית כשהמשתמש גולל ידנית
   const handleUserScroll = () => {
     clearInterval(autoScrollInterval.current);
-    // חזור לגלילה אוטומטית אחרי 20 שניות
-    setTimeout(() => {
-      autoScrollInterval.current = setInterval(() => {
-        if (scrollRef.current) {
-          scrollRef.current.scrollBy({ left: 100, behavior: "smooth" });
-          // אם הגענו לסוף, חזור להתחלה
-          if (
-            scrollRef.current.scrollLeft + scrollRef.current.offsetWidth >=
-            scrollRef.current.scrollWidth
-          ) {
-            scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-          }
-        }
-      }, 2500);
-    }, 20000);
   };
 
   const openFullscreen = (imageSrc) => setFullscreenImage(imageSrc);

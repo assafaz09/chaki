@@ -11,6 +11,7 @@ import LoadingScreen from "./commponents/LoadingScreen";
 import Footer from "./commponents/Footer";
 import InfiniteCarousel from "./commponents/InfiniteCarousel";
 import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
+import ScrollSlider from "./commponents/ScrollSlider";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +26,9 @@ function App() {
 
   return (
     <>
+      {/* Scroll Slider */}
+      <ScrollSlider />
+      
       <div className="relative min-h-screen animate-fadeIn ">
         <AnimatedSection direction="scale" delay={1}>
           <div className="relative inline-block mx-auto">
@@ -125,9 +129,9 @@ function App() {
             <TrackCard
               track={{
                 coverSrc:
-                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759059843/chaki_treack_herjse.jpg",
-                title: "CHAKI, Cafe de anatolia - drumline",
-                artists: "",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1761043498/WhatsApp_Image_2025-10-20_at_21.39.41_sqw5v7.jpg",
+                title: " DRUMLINE",
+                artists: "CHAKI, Cafe de anatolia ",
                 platforms: {
                   spotify:
                     "https://open.spotify.com/album/4gKWRg7ZAiRhd6v29foX4n?si=W9MANCDaRmqXGi2mJBSOeQ",
@@ -226,10 +230,9 @@ function App() {
               videos={[
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965866/IMG_3693_cxo5z0.mov", // החלף עם כתובת הסרטון שלך
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
+                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965758/IMG_3689_f9uzmb.mov", // החלף עם כתובת הסרטון שלך
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4", // החלף עם כתובת הסרטון שלך
                 "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760967244/IMG_3697_3_vqzfdm.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4",
               ]}
             />
           </div>
