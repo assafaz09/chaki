@@ -8,9 +8,10 @@ export default function InfiniteCarousel({
 }) {
   const containerRef = useRef(null);
   const contentRef = useRef(null);
-  const [offset, setOffset] = useState(0);
   const [paused, setPaused] = useState(false);
   const [contentWidth, setContentWidth] = useState(0);
+  const offsetRef = useRef(0);
+  const lastTimeRef = useRef(null);
   const frameRef = useRef();
   const resumeTimeout = useRef();
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -25,31 +26,68 @@ export default function InfiniteCarousel({
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // Measure content width
+  // Measure content width with ResizeObserver
   useEffect(() => {
-    if (contentRef.current) {
-      setContentWidth(contentRef.current.offsetWidth / 2);
-    }
+    if (!contentRef.current) return;
+    const el = contentRef.current;
+
+    const updateWidth = () => {
+      const width = el.scrollWidth / 2;
+      setContentWidth(width);
+    };
+
+    updateWidth();
+
+    const observer = new ResizeObserver(() => updateWidth());
+    observer.observe(el);
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateWidth);
+    };
   }, [images]);
 
   // Animation loop
   useEffect(() => {
     if (reduceMotion || paused || !contentWidth) return;
-    let lastTime = performance.now();
 
-    function animate(now) {
-      const dt = (now - lastTime) / 1000;
-      lastTime = now;
-      setOffset((prev) => {
-        let next = prev + speed * dt;
-        if (next >= contentWidth) next -= contentWidth;
-        return next;
-      });
-      frameRef.current = requestAnimationFrame(animate);
-    }
-    frameRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameRef.current);
+    const step = (now) => {
+      if (lastTimeRef.current == null) lastTimeRef.current = now;
+      const dt = (now - lastTimeRef.current) / 1000;
+      lastTimeRef.current = now;
+
+      offsetRef.current += speed * dt;
+      if (offsetRef.current >= contentWidth) {
+        offsetRef.current -= contentWidth;
+      }
+
+      if (contentRef.current) {
+        contentRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+      }
+
+      frameRef.current = requestAnimationFrame(step);
+    };
+
+    frameRef.current = requestAnimationFrame(step);
+
+    return () => {
+      lastTimeRef.current = null;
+      cancelAnimationFrame(frameRef.current);
+    };
   }, [paused, speed, contentWidth, reduceMotion]);
+
+  // Reset transform when motion reduced or width changes
+  useEffect(() => {
+    if (!contentRef.current) return;
+    if (!contentWidth || reduceMotion) {
+      offsetRef.current = 0;
+      contentRef.current.style.transform = "translate3d(0, 0, 0)";
+      return;
+    }
+    offsetRef.current = offsetRef.current % contentWidth;
+    contentRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+  }, [contentWidth, reduceMotion]);
 
   // Pause on scroll/wheel/touchmove/user drag
   useEffect(() => {
@@ -58,22 +96,23 @@ export default function InfiniteCarousel({
       clearTimeout(resumeTimeout.current);
       resumeTimeout.current = setTimeout(() => setPaused(false), 400);
     }
+    const containerEl = containerRef.current;
     window.addEventListener("scroll", pause, { passive: true });
     window.addEventListener("wheel", pause, { passive: true });
     window.addEventListener("touchmove", pause, { passive: true });
-    if (containerRef.current) {
-      containerRef.current.addEventListener("mousedown", pause);
-      containerRef.current.addEventListener("touchstart", pause);
-      containerRef.current.addEventListener("scroll", pause);
+    if (containerEl) {
+      containerEl.addEventListener("mousedown", pause);
+      containerEl.addEventListener("touchstart", pause);
+      containerEl.addEventListener("scroll", pause);
     }
     return () => {
       window.removeEventListener("scroll", pause);
       window.removeEventListener("wheel", pause);
       window.removeEventListener("touchmove", pause);
-      if (containerRef.current) {
-        containerRef.current.removeEventListener("mousedown", pause);
-        containerRef.current.removeEventListener("touchstart", pause);
-        containerRef.current.removeEventListener("scroll", pause);
+      if (containerEl) {
+        containerEl.removeEventListener("mousedown", pause);
+        containerEl.removeEventListener("touchstart", pause);
+        containerEl.removeEventListener("scroll", pause);
       }
       clearTimeout(resumeTimeout.current);
     };
@@ -186,9 +225,9 @@ export default function InfiniteCarousel({
         ref={contentRef}
         className="flex gap-4"
         style={{
-          transform: `translateX(-${offset}px)`,
           transition: paused || reduceMotion ? "none" : undefined,
           willChange: "transform",
+          transform: "translate3d(0, 0, 0)",
         }}
       >
         {allImages.map((src, i) => {

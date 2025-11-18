@@ -14,7 +14,6 @@ import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
 import ScrollSlider from "./commponents/ScrollSlider";
 import TestTrack from "./commponents/TestTrack";
 
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -109,8 +108,8 @@ function App() {
               Latest Releases
             </h2>
 
-            <TestTrack/>
-          
+            <TestTrack />
+
             <TrackCard
               track={{
                 coverSrc:
@@ -189,13 +188,30 @@ function App() {
 
             <Tiktok
               videos={[
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
-                // "https://res.cloudinary.com/dpgnqgyxe/video/upload/f_auto,vc_auto,q_auto:good,br_auto/v1758450840/IMG_9012_c9u9si.mov",
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
+                  poster: null,
+                },
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
+                  poster: null,
+                },
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
+                  poster: null,
+                },
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
+                  poster: null,
+                },
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
+                  poster: null,
+                },
+                {
+                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
+                  poster: null,
+                },
               ]}
             />
           </div>

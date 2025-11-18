@@ -69,8 +69,7 @@ body {
 
 .button {
   background-color: black;
-
--webkit-appearance: none;
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   border-radius: 8px;

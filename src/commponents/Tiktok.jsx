@@ -11,17 +11,64 @@ export default function Tiktok({ videos = [] }) {
 
   // Default videos if none provided
   const defaultVideos = [
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_10mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_20mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_30mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_40mb.mp4",
-    "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
+    {
+      src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_10mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_20mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_30mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_40mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
+    {
+      src: "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_50mb.mp4",
+      poster: "IMG_2992_nmahzj.png",
+    },
   ];
 
-  const videoList = videos.length > 0 ? videos : defaultVideos;
+  const normalizeVideo = (video, index) => {
+    if (typeof video === "string") {
+      return {
+        src: video,
+        poster: undefined,
+      };
+    }
+    if (typeof video === "object" && video !== null) {
+      const hasPoster = Object.prototype.hasOwnProperty.call(video, "poster");
+      return {
+        src: video.src || "",
+        poster: hasPoster
+          ? video.poster
+          : defaultVideos[index % defaultVideos.length]?.poster || undefined,
+      };
+    }
+    return {
+      src: "",
+      poster: undefined,
+    };
+  };
+
+  const videoListRaw = videos.length > 0 ? videos : defaultVideos;
+  const videoList = videoListRaw.map(normalizeVideo);
 
   // Touch handlers for vertical swipe
   const handleTouchStart = (e) => {
@@ -165,8 +212,7 @@ export default function Tiktok({ videos = [] }) {
               className="w-full h-full flex-shrink-0 relative rounded-2xl overflow-hidden"
             >
               <video
-                controls
-                poster=""
+                poster={video.poster}
                 ref={(el) => (videoRefs.current[index] = el)}
                 className="block w-full h-full object-cover"
                 muted={false}
@@ -176,7 +222,7 @@ export default function Tiktok({ videos = [] }) {
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
               >
-                <source src={video} />
+                <source src={video.src} />
                 Your browser does not support the video tag.
               </video>
 
