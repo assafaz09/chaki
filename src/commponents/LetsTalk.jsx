@@ -125,7 +125,7 @@ export default function LetsTalk() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 px-6 bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white/50 rounded-lg text-white font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="button w-full py-3 px-6 bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white/50 rounded-lg text-white font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center gap-2">

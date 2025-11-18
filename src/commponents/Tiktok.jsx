@@ -133,7 +133,7 @@ export default function Tiktok({ videos = [] }) {
   );
 
   return (
-    <div className="w-full h-[600px] overflow-hidden bg-transparent relative touch-none">
+    <div className="w-full h-[600px] overflow-hidden bg relative touch-none">
       {/* Scroll Indicator */}
 
       {/* Swipe Hint */}
@@ -165,6 +165,8 @@ export default function Tiktok({ videos = [] }) {
               className="w-full h-full flex-shrink-0 relative rounded-2xl overflow-hidden"
             >
               <video
+                controls
+                poster=""
                 ref={(el) => (videoRefs.current[index] = el)}
                 className="block w-full h-full object-cover"
                 muted={false}
@@ -184,10 +186,10 @@ export default function Tiktok({ videos = [] }) {
                   className="absolute inset-0 flex items-center justify-center cursor-pointer"
                   onClick={togglePlay}
                 >
-                  <div className="w-20 h-20 rounded-full bg-black/50 flex items-center justify-center">
+                  <div className=" flex items-center justify-center">
                     {isPlaying ? (
                       <svg
-                        className="w-8 h-8 text-white"
+                        className="w-8 h-8 text-gray"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -195,7 +197,7 @@ export default function Tiktok({ videos = [] }) {
                       </svg>
                     ) : (
                       <svg
-                        className="w-8 h-8 text-white ml-1"
+                        className="w-8 h-8 text-gray ml-1"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >

@@ -12,6 +12,8 @@ import Footer from "./commponents/Footer";
 import InfiniteCarousel from "./commponents/InfiniteCarousel";
 import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
 import ScrollSlider from "./commponents/ScrollSlider";
+import TestTrack from "./commponents/TestTrack";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +30,7 @@ function App() {
     <>
       {/* Scroll Slider */}
       <ScrollSlider />
-      
+
       <div className="relative min-h-screen animate-fadeIn ">
         <AnimatedSection direction="scale" delay={1}>
           <div className="relative inline-block mx-auto">
@@ -106,6 +108,9 @@ function App() {
             <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Latest Releases
             </h2>
+
+            <TestTrack/>
+          
             <TrackCard
               track={{
                 coverSrc:

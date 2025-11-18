@@ -54,7 +54,7 @@ export default function TrackCard({ track, onPlay }) {
           <button
             type="button"
             disabled
-            className="cursor-not-allowed rounded-full border border-black/20 px-4 py-1 text-sm text-black/40"
+            className="button cursor-not-allowed rounded-full border border-black/20 px-4 py-1 text-sm text-black/40"
             aria-disabled="true"
           >
             Play
@@ -99,7 +99,7 @@ export default function TrackCard({ track, onPlay }) {
         <button
           type="button"
           onClick={handlePlayClick}
-          className="rounded-full border border-white/40 px-4 py-1 text-sm text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+          className="button rounded-full border border-white/40 px-4 py-1 text-sm text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
           aria-label={track.title ? `Play ${track.title}` : "Play"}
         >
           Play
@@ -141,7 +141,7 @@ export default function TrackCard({ track, onPlay }) {
               </div>
               <button
                 onClick={() => setVisible(false)}
-                className="ml-auto rounded-full border border-white/40 px-3 py-1 text-xs text-white/80 hover:bg-white/10"
+                className="button ml-auto rounded-full border border-white/40 px-3 py-1 text-xs text-white/80 hover:bg-white/10"
               >
                 Close
               </button>
