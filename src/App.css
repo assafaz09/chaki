@@ -1,7 +1,6 @@
 #root {
   width: 100vw;
   margin: 0 auto;
- 
   text-align: center;
 }
 
@@ -9,22 +8,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
   margin: 0;
   background: #121212;
-  font-family: 'Arial', sans-serif;
 }
 
 .shadow-dance-text {
   font-size: 5rem;
   color: transparent;
-  /* Use only -webkit-text-stroke for best browser support */
-  -webkit-text-stroke: 3px #000000;
- 
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  -webkit-text-stroke: 2.5px #000000;
 
   animation: shadow-dance 2s infinite;
 }
-
 
 ​
 
@@ -86,13 +81,22 @@ body {
   }
 }
 
-.home{
+.home {
   background-image: url("https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763892632/11test_ncjen7.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed !important;
-  
+  /* Adjust the background overlay transparency for .home using an after pseudo-element */
+  position: relative;
+}
+.home::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.273); /* Adjust alpha for transparency */
+  pointer-events: none;
+  z-index: 0;
 }
 
 .animate-fadeIn {
@@ -100,8 +104,9 @@ body {
 }
 
 .button {
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.786);
   -webkit-appearance: none;
+color: #000000;
   -moz-appearance: none;
   appearance: none;
   border-radius: 8px;

@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { SiSpotify, SiApplemusic, SiYoutubemusic, SiSoundcloud, SiBeatport} from "react-icons/si";
+import {
+  SiSpotify,
+  SiApplemusic,
+  SiYoutubemusic,
+  SiSoundcloud,
+  SiBeatport,
+} from "react-icons/si";
 
 // Reusable track card component that accepts track data as props
 // Usage:
@@ -45,7 +51,7 @@ export default function TrackCard({ track, onPlay }) {
   const Row = ({ label, href, icon }) => {
     const disabled = !href;
     return (
-      <div className="flex items-center justify-between border-b border-black/10 px-4 py-3 last:border-b-0">
+      <div className="flex items-center justify-between border-b  px-4 py-3 last:border-b-0">
         <span className="flex items-center gap-3 text-[15px] font-medium text-black">
           {icon}
           <span className="sr-only">{label}</span>
@@ -75,7 +81,7 @@ export default function TrackCard({ track, onPlay }) {
 
   return (
     <>
-      <div className="flex items-center gap-4 rounded-xl bg-[#0f2a3a]/60 p-3 shadow-md backdrop-blur-sm">
+      <div className="flex items-center gap-4 rounded-xl bg-black/30 p-3 shadow-md backdrop-blur-sm">
         <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg">
           <img
             src={track.coverSrc}
@@ -99,7 +105,7 @@ export default function TrackCard({ track, onPlay }) {
         <button
           type="button"
           onClick={handlePlayClick}
-          className="button rounded-full border border-white/40 px-4 py-1 text-sm text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+          className=" rounded-full border px-4 py-1 text-sm transition"
           aria-label={track.title ? `Play ${track.title}` : "Play"}
         >
           Play
@@ -109,17 +115,17 @@ export default function TrackCard({ track, onPlay }) {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div
-            className={`absolute inset-0 bg-black/60 transition-opacity duration-200 ${
-              visible ? "opacity-100" : "opacity-0"
+            className={`absolute inset-0 transition-opacity duration-400 ${
+              visible ? "opacity-100" : "opacity-100"
             }`}
             onClick={() => setVisible(false)}
           />
           <div
-            className={`relative z-10 w-[min(92vw,520px)] overflow-hidden rounded-2xl bg-white shadow-2xl transition-transform duration-200 ease-out ${
+            className={`relative z-10 w-[min(92vw,520px)] overflow-hidden rounded-2xl shadow-2xl transition-transform duration-400 ease-out ${
               visible ? "scale-100 translate-y-0" : "scale-95 translate-y-2"
             }`}
           >
-            <div className="flex items-center gap-3 bg-[#1b3c4f] px-4 py-4">
+            <div className="flex items-center gap-3 bg-[#000000dc] px-4 py-4">
               <div className="h-12 w-12 overflow-hidden rounded-lg">
                 <img
                   src={track.coverSrc}
@@ -141,13 +147,13 @@ export default function TrackCard({ track, onPlay }) {
               </div>
               <button
                 onClick={() => setVisible(false)}
-                className="button ml-auto rounded-full border border-white/40 px-3 py-1 text-xs text-white/80 hover:bg-white/10"
+                className="button ml-auto py-1 text-xs text-white/80 hover:bg-white/10"
               >
-                Close
+              Close
               </button>
             </div>
 
-            <div className="divide-y divide-black/10 bg-white">
+            <div className="divide-y divide-black/30 bg-white">
               <Row
                 icon={<SiSpotify className="text-[#1DB954]" size={20} />}
                 label="Spotify"

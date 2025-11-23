@@ -26,228 +26,236 @@ function App() {
 
   return (
     <>
-      {/* Scroll Slider */}
-      <ScrollSlider />
+      <div>
+        {/* Scroll Slider */}
+        <ScrollSlider />
 
-      <div className="home relative min-h-screen animate-fadeIn ">
-        <AnimatedSection direction="scale" delay={1}>
-          <div class="shadow-dance-container">
-            <h1 class=" pt-50 shadow-dance-text">CHAKI</h1>
-          </div>
-        </AnimatedSection>
-        <AnimatedSection direction="up" delay={200}>
-          <div className="flex flex-row justify-center gap-10 mt-10px">
-            <a
-              aria-label="Instagram"
-              href="https://www.instagram.com/_onlychaki_/"
-              className="text-black"
+        <div className="home relative min-h-screen animate-fadeIn ">
+          <AnimatedSection direction="scale" delay={1}>
+            <div class="shadow-dance-container"
+            
             >
-              <SiInstagram size={28} className="text-black" />
-            </a>
-            <a
-              aria-label="TikTok"
-              href="https://www.tiktok.com/@noam_zada?_t=ZS-8y1jaflWN9s&_r=1"
-              className="text-black"
-            >
-              <SiTiktok size={28} className="text-black" />
-            </a>
-            <a
-              aria-label="SoundCloud"
-              href="https://soundcloud.com/chaki-901233941"
-              className="text-black"
-            >
-              <SiSoundcloud size={28} className="text-black" />
-            </a>
-            <a
-              aria-label="Spotify"
-              href="https://open.spotify.com/artist/0mGKtM0f3dBqrrz9m9aZHR"
-              className="text-black"
-            >
-              <SiSpotify size={28} className="text-black" />
-            </a>
-          </div>
-        </AnimatedSection>
-
-        {/* Dynamic Scroll Down Icon */}
-        <AnimatedSection direction="up" delay={400}>
-          <div className="flex justify-center mt-8">
-            <div className="flex flex-col items-center gap-2 animate-bounce">
-              <svg
-                className="w-8 h-8 text-white/90 drop-shadow-[0_0_4px_black]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2l8 8-8 8-8-8 8-8zm0 2.83L6.83 10 12 15.17 17.17 10 12 4.83z" />
-              </svg>
-              <div className="w-2 h-2 bg-white/90 rounded-full drop-shadow-[0_0_4px_black]"></div>
+              <h1 class=" pt-50 shadow-dance-text">CHAKI</h1>
             </div>
-          </div>
-        </AnimatedSection>
+          </AnimatedSection>
+          <AnimatedSection direction="up" delay={200}>
+            <div className="flex flex-row justify-center gap-10 mt-10px">
+              <a
+                aria-label="Instagram"
+                href="https://www.instagram.com/_onlychaki_/"
+                className="text-black"
+              >
+                <SiInstagram size={28} className="text-black" />
+              </a>
+              <a
+                aria-label="TikTok"
+                href="https://www.tiktok.com/@noam_zada?_t=ZS-8y1jaflWN9s&_r=1"
+                className="text-black"
+              >
+                <SiTiktok size={28} className="text-black" />
+              </a>
+              <a
+                aria-label="SoundCloud"
+                href="https://soundcloud.com/chaki-901233941"
+                className="text-black"
+              >
+                <SiSoundcloud size={28} className="text-black" />
+              </a>
+              <a
+                aria-label="Spotify"
+                href="https://open.spotify.com/artist/0mGKtM0f3dBqrrz9m9aZHR"
+                className="text-black"
+              >
+                <SiSpotify size={28} className="text-black" />
+              </a>
+            </div>
+          </AnimatedSection>
 
-        {/* Track Cards Section */}
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-8 space-y-4 px-4">
-            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              Latest Releases
-            </h2>
+          {/* Dynamic Scroll Down Icon */}
+          <AnimatedSection direction="up" delay={400}>
+            <div className="flex justify-center mt-8">
+              <div className="flex flex-col items-center gap-2 animate-bounce">
+                <svg
+                  className="w-8 h-8 text-white/90 drop-shadow-[0_0_4px_black]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2l8 8-8 8-8-8 8-8zm0 2.83L6.83 10 12 15.17 17.17 10 12 4.83z" />
+                </svg>
+                <div className="w-2 h-2 bg-white/90 rounded-full drop-shadow-[0_0_4px_black]"></div>
+              </div>
+            </div>
+          </AnimatedSection>
 
-            <TrackCard
-              track={{
-                coverSrc:
-                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759058600/LACOSITA_owmjsw.jpg",
-                title: "LACOSITA",
-                artists: "CHAKI",
-                platforms: {
-                  spotify:
-                    "https://open.spotify.com/track/1TvbM3eWXpAsj7FOmC0fP7?si=n-Ur_VpfTFajfCz2-eAkhg&context=spotify%3Aalbum%3A0UiuUN4359mCE1kYnAzkCH",
-                  appleMusic:
-                    "https://music.apple.com/il/album/lacosita/1838472762?i=1838472764&l=he",
-                  youtubeMusic:
-                    "https://youtu.be/xugPUIMirH0?si=vT9IJfpj0XUkJIQZ",
-                  soundcloud: "https://on.soundcloud.com/GeOk24GNGdJBsDN2jT",
-                  beatport: "https://www.beatport.com/release/lacosita/5363299",
-                },
-              }}
-            />
+          {/* Track Cards Section */}
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-8 space-y-4 px-4">
+              <h2
+                className=" text-3xl drop-shadow-[0_0_8px_black]"
+              
+              >
+                Latest Releases
+              </h2>
+
+              <TrackCard
+                track={{
+                  coverSrc:
+                    "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1759058600/LACOSITA_owmjsw.jpg",
+                  title: "LACOSITA",
+                  artists: "CHAKI",
+                  platforms: {
+                    spotify:
+                      "https://open.spotify.com/track/1TvbM3eWXpAsj7FOmC0fP7?si=n-Ur_VpfTFajfCz2-eAkhg&context=spotify%3Aalbum%3A0UiuUN4359mCE1kYnAzkCH",
+                    appleMusic:
+                      "https://music.apple.com/il/album/lacosita/1838472762?i=1838472764&l=he",
+                    youtubeMusic:
+                      "https://youtu.be/xugPUIMirH0?si=vT9IJfpj0XUkJIQZ",
+                    soundcloud: "https://on.soundcloud.com/GeOk24GNGdJBsDN2jT",
+                    beatport:
+                      "https://www.beatport.com/release/lacosita/5363299",
+                  },
+                }}
+              />
+              <br />
+
+              <TrackCard
+                track={{
+                  coverSrc:
+                    "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1761043498/WhatsApp_Image_2025-10-20_at_21.39.41_sqw5v7.jpg",
+                  title: " DRUMLINE",
+                  artists: "CHAKI, Cafe de anatolia ",
+                  platforms: {
+                    spotify:
+                      "https://open.spotify.com/album/4gKWRg7ZAiRhd6v29foX4n?si=W9MANCDaRmqXGi2mJBSOeQ",
+                    appleMusic:
+                      "https://music.apple.com/il/album/drumline-single/1839479856?l=he",
+                    youtubeMusic:
+                      "https://youtu.be/s7_3CSB8rQQ?si=o5GTTgGWYgmYTy6D",
+                    soundcloud: "https://on.soundcloud.com/KYoJjFWfxZziRhw5jK",
+                    beatport:
+                      "https://beatport.com/release/drumline/5382961?utm_source=ios&utm_content=release&utm_medium=share",
+                  },
+                }}
+              />
+            </div>
+          </AnimatedSection>
+
+          {/* Gallery Section */}
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-12 ">
+              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+                Press
+              </h2>
+              <br />
+              <InfiniteCarousel
+                images={[
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448628/IMG_6872_xp0l5p.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448644/IMG_6878_haqugn.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448637/IMG_6882_hwon3z.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448648/IMG_2992_nmahzj.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448627/IMG_6875_xr41w5.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448655/IMG_2991_eumyny.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448633/IMG_7660_bjew3t.jpg",
+                ]}
+                speed={20}
+                pauseOnHover={true}
+              />
+            </div>
             <br />
-
-            <TrackCard
-              track={{
-                coverSrc:
-                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1761043498/WhatsApp_Image_2025-10-20_at_21.39.41_sqw5v7.jpg",
-                title: " DRUMLINE",
-                artists: "CHAKI, Cafe de anatolia ",
-                platforms: {
-                  spotify:
-                    "https://open.spotify.com/album/4gKWRg7ZAiRhd6v29foX4n?si=W9MANCDaRmqXGi2mJBSOeQ",
-                  appleMusic:
-                    "https://music.apple.com/il/album/drumline-single/1839479856?l=he",
-                  youtubeMusic:
-                    "https://youtu.be/s7_3CSB8rQQ?si=o5GTTgGWYgmYTy6D",
-                  soundcloud: "https://on.soundcloud.com/KYoJjFWfxZziRhw5jK",
-                  beatport:
-                    "https://beatport.com/release/drumline/5382961?utm_source=ios&utm_content=release&utm_medium=share",
-                },
-              }}
-            />
-          </div>
-        </AnimatedSection>
-
-        {/* Gallery Section */}
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 ">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              Press
-            </h2>
             <br />
-            <InfiniteCarousel
-              images={[
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448652/IMG_2982_f4actr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448628/IMG_6872_xp0l5p.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448644/IMG_6878_haqugn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448637/IMG_6882_hwon3z.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448648/IMG_2992_nmahzj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448627/IMG_6875_xr41w5.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448655/IMG_2991_eumyny.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758448633/IMG_7660_bjew3t.jpg",
-              ]}
-              speed={20}
-              pauseOnHover={true}
-            />
-          </div>
-          <br />
-          <br />
-        </AnimatedSection>
+          </AnimatedSection>
 
-        {/* TikTok Videos Section */}
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 p-5">
-            <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              Moments
-            </h2>
+          {/* TikTok Videos Section */}
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-12 p-5">
+              <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+                Moments
+              </h2>
+              <br />
+
+              <Tiktok
+                videos={[
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
+                    poster: null,
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
+                    poster: null,
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
+                    poster: null,
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
+                    poster: null,
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
+                    poster: null,
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
+                    poster: null,
+                  },
+                ]}
+              />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-12 ">
+              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+                New module
+              </h2>
+              <br />
+              <InfiniteCarousel
+                images={[
+                  // "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451313/IMG_2967_urtled.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451302/IMG_6888_flfivn.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451298/IMG_2961_r63yar.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451296/IMG_6914_mztdfj.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451330/IMG_3042_d7khnr.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451320/IMG_3041_vvryao.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451327/IMG_3045_i8pqv4.jpg",
+                ]}
+                speed={30}
+                pauseOnHover={true}
+              />
+            </div>
             <br />
-
-            <Tiktok
-              videos={[
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                  poster: null,
-                },
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                  poster: null,
-                },
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
-                  poster: null,
-                },
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
-                  poster: null,
-                },
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
-                  poster: null,
-                },
-                {
-                  src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
-                  poster: null,
-                },
-              ]}
-            />
-          </div>
-        </AnimatedSection>
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 ">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
-              New module
-            </h2>
             <br />
-            <InfiniteCarousel
-              images={[
-                // "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451313/IMG_2967_urtled.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451302/IMG_6888_flfivn.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451298/IMG_2961_r63yar.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451296/IMG_6914_mztdfj.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451330/IMG_3042_d7khnr.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451320/IMG_3041_vvryao.jpg",
-                "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451327/IMG_3045_i8pqv4.jpg",
-              ]}
-              speed={30}
-              pauseOnHover={true}
-            />
-          </div>
-          <br />
-          <br />
-        </AnimatedSection>
+          </AnimatedSection>
 
-        {/* Horizontal Video Section */}
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12 p-5">
-            <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
-              Live Set
-            </h2>
-            <HorizontalVideoCarousel
-              videos={[
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965866/IMG_3693_cxo5z0.mov", // החלף עם כתובת הסרטון שלך
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965758/IMG_3689_f9uzmb.mov", // החלף עם כתובת הסרטון שלך
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4", // החלף עם כתובת הסרטון שלך
-                "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760967244/IMG_3697_3_vqzfdm.mov",
-              ]}
-            />
-          </div>
-        </AnimatedSection>
+          {/* Horizontal Video Section */}
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-12 p-5">
+              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
+                Live Set
+              </h2>
+              <HorizontalVideoCarousel
+                videos={[
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965666/IMG_3692_1_sgymcd.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965866/IMG_3693_cxo5z0.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760965758/IMG_3689_f9uzmb.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760966100/Untitled_video_-_Made_with_Clipchamp_3_ccvfcn.mp4", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1760967244/IMG_3697_3_vqzfdm.mov",
+                ]}
+              />
+            </div>
+          </AnimatedSection>
 
-        {/* Contact Form Section */}
-        <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12">
-            <LetsTalk />
-          </div>
-        </AnimatedSection>
+          {/* Contact Form Section */}
+          <AnimatedSection direction="up" delay={0}>
+            <div className="mt-12">
+              <LetsTalk />
+            </div>
+          </AnimatedSection>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }
