@@ -12,7 +12,6 @@ import Footer from "./commponents/Footer";
 import InfiniteCarousel from "./commponents/InfiniteCarousel";
 import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
 import ScrollSlider from "./commponents/ScrollSlider";
-import TestTrack from "./commponents/TestTrack";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,26 +29,10 @@ function App() {
       {/* Scroll Slider */}
       <ScrollSlider />
 
-      <div className="relative min-h-screen animate-fadeIn ">
+      <div className="home relative min-h-screen animate-fadeIn ">
         <AnimatedSection direction="scale" delay={1}>
-          <div className="relative inline-block mx-auto">
-            <img
-              className="mx-auto w-full max-w-xs mt-4
-    [mask-image:linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]
-    [-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_65%,transparent_100%)]
-    [mask-repeat:no-repeat] [mask-size:100%_100%]
-    [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%] top-0"
-              src="https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto,w_auto,dpr_auto/v1758105243/%D7%A2%D7%99%D7%A6%D7%95%D7%91_%D7%9C%D7%9C%D7%90_%D7%A9%D7%9D_8_zhoon8.png"
-              alt="chaki main pic"
-              loading="eager"
-              fetchPriority="high"
-            />
-            <h1
-              style={{ fontSize: "35px" }}
-              className="absolute bottom-1 left-1/2 -translate-x-1/2 text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]"
-            >
-              CHAKI
-            </h1>
+          <div class="shadow-dance-container">
+            <h1 class=" pt-50 shadow-dance-text">CHAKI</h1>
           </div>
         </AnimatedSection>
         <AnimatedSection direction="up" delay={200}>
@@ -107,8 +90,6 @@ function App() {
             <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Latest Releases
             </h2>
-
-            <TestTrack />
 
             <TrackCard
               track={{
@@ -180,7 +161,7 @@ function App() {
 
         {/* TikTok Videos Section */}
         <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12">
+          <div className="mt-12 p-5">
             <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
               Moments
             </h2>
@@ -243,7 +224,7 @@ function App() {
 
         {/* Horizontal Video Section */}
         <AnimatedSection direction="up" delay={0}>
-          <div className="mt-12">
+          <div className="mt-12 p-5">
             <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
               Live Set
             </h2>
