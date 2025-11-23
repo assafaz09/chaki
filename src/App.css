@@ -19,21 +19,13 @@ body {
   font-size: 5rem;
   color: transparent;
   /* Use only -webkit-text-stroke for best browser support */
-  -webkit-text-stroke: 2px #fff;
-  /* Remove this line, this property is not widely supported and can cause issues */
-  /* text-stroke: 6px #ffffff; */
-  text-shadow: 5px 5px 0 #00000076, 10px 10px 0 #ffffff9f;
+  -webkit-text-stroke: 3px #000000;
+ 
+
   animation: shadow-dance 2s infinite;
 }
 
-@keyframes shadow-dance {
-  0%, 100% {
-      text-shadow: 5px 5px 0 #00000076, 10px 10px 0 #ffffff9f;
-  }
-  50% {
-      text-shadow: -5px -5px 0 #00000076, -10px -10px 0 #ffffff9f;
-  }
-}
+
 ​
 
 /* הסתרת סליידר הדפדפן הרגיל */
