@@ -87,6 +87,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed !important;
+  /* Enable background-attachment: fixed on mobile (iOS/Safari/Android) via media queries */
+  @supports (-webkit-touch-callout: none) {
+    background-attachment: fixed !important;
+  }
   /* Adjust the background overlay transparency for .home using an after pseudo-element */
   position: sticky;
 }
@@ -111,3 +115,4 @@ color: #000000;
   appearance: none;
   border-radius: 8px;
 }
+

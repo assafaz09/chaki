@@ -143,7 +143,7 @@ function App() {
           {/* Gallery Section */}
           <AnimatedSection direction="up" delay={0}>
             <div className="mt-12 ">
-              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] p-6 [text-shadow:0_0_16px_black,0_0_24px_black]">
                 Press
               </h2>
               <br />
