@@ -178,7 +178,7 @@ function App() {
                 videos={[
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                    poster: null,
+                    poster: "./Gallery/black.png",
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",

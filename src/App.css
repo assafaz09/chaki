@@ -88,7 +88,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed !important;
   /* Adjust the background overlay transparency for .home using an after pseudo-element */
-  position: relative;
+  position: sticky;
 }
 .home::after {
   content: "";
