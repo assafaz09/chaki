@@ -178,27 +178,33 @@ function App() {
                 videos={[
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                    poster: "./Gallery/black.png",
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png", // fallback image (if needed)
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ", // solid black
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                    poster: null,
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
-                    poster: null,
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
-                    poster: null,
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
-                    poster: null,
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
                   },
                   {
                     src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
-                    poster: null,
+                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
+                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
                   },
                 ]}
               />
