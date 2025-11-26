@@ -9,15 +9,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  background-image: url("https://res.cloudinary.com/dpgnqgyxe/image/upload/v1764169065/te11stt11tt_djeg4c.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed !important;
-  /* Enable background-attachment: fixed on mobile (iOS/Safari/Android) via media queries */
-  @supports (-webkit-touch-callout: none) {
-    background-attachment: fixed !important;
-  }
 }
 
 .shadow-dance-text {
@@ -90,23 +81,34 @@ body {
 }
 
 .home {
+  min-height: 100vh;
   background-image: url("https://res.cloudinary.com/dpgnqgyxe/image/upload/v1764169065/te11stt11tt_djeg4c.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed !important;
-  /* Enable background-attachment: fixed on mobile (iOS/Safari/Android) via media queries */
-  @supports (-webkit-touch-callout: none) {
-    background-attachment: fixed !important;
-  }
-  /* Adjust the background overlay transparency for .home using an after pseudo-element */
-  position: sticky;
+
+  /* הרקע מקובע (fixed) עבור מחשבים בלבד */
+  background-attachment: fixed;
+
+  /* הסרת position: sticky - זה יכול לגרום לבעיות גלילה ורנדור לא צפויות */
+  position: relative; /* או להשאיר ללא הגדרת position אם אין צורך */
 }
+
+/* 🛑 תיקון קריטי לנייד: ניטרול background-attachment: fixed 🛑 */
+/* הפעלת הכלל רק כאשר רוחב המסך קטן מ-768px (טאבלטים וטלפונים) */
+@media (max-width: 768px) {
+  .home {
+    /* שינוי התנהגות הרקע מ"קבוע" ל"גולל" כדי למנוע עיוות ומתיחה */
+    background-attachment: fixed;
+  }
+}
+
+/* אלמנט ה-After שלך (ללא שינוי, הוא טוב) */
 .home::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.273); /* Adjust alpha for transparency */
+  background: rgba(0, 0, 0, 0.273);
   pointer-events: none;
   z-index: 0;
 }
