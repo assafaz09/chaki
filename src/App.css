@@ -9,7 +9,15 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  background: #121212;
+  background-image: url("https://res.cloudinary.com/dpgnqgyxe/image/upload/v1764169065/te11stt11tt_djeg4c.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  /* Enable background-attachment: fixed on mobile (iOS/Safari/Android) via media queries */
+  @supports (-webkit-touch-callout: none) {
+    background-attachment: fixed !important;
+  }
 }
 
 .shadow-dance-text {
@@ -110,9 +118,110 @@ body {
 .button {
   background-color: rgba(255, 255, 255, 0.786);
   -webkit-appearance: none;
-color: #000000;
+  color: #000000;
   -moz-appearance: none;
   appearance: none;
   border-radius: 8px;
 }
 
+@media (min-width: 1024px) {
+  body,
+  html {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    background-color: #888;
+    padding: 50px;
+  }
+
+  .container,
+  .main-content,
+  .section,
+  .home {
+    width: 80%;
+    max-width: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 32px;
+  }
+
+  .home {
+    min-height: 80vh;
+    border-radius: 24px;
+    box-shadow: 0 6px 30px 0 rgba(0, 0, 0, 0.09),
+      0 1.5px 10px 0 rgba(0, 0, 0, 0.06);
+    background-attachment: fixed !important;
+    position: relative;
+    overflow: hidden;
+  }
+  .home::after {
+    border-radius: 24px;
+  }
+
+  header,
+  nav,
+  .navbar {
+    font-size: 1.1em;
+    padding: 14px 30px;
+  }
+
+  .button,
+  button,
+  input[type="submit"] {
+    padding: 12px 32px;
+    font-size: 1.08em;
+    min-width: 160px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: box-shadow 0.2s, background 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  form {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 1em;
+    min-width: 360px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    transition: border-color 0.17s;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: inherit;
+    margin: 1.2em 0 0.7em 0;
+    line-height: 1.14;
+    letter-spacing: 0.01em;
+  }
+
+  .row,
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .column,
+  [class*="col-"] {
+    flex: 1 1 0;
+    min-width: 320px;
+  }
+}
