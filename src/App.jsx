@@ -12,6 +12,7 @@ import Footer from "./commponents/Footer";
 import InfiniteCarousel from "./commponents/InfiniteCarousel";
 import HorizontalVideoCarousel from "./commponents/HorizontalVideoCarousel";
 import ScrollSlider from "./commponents/ScrollSlider";
+import Moments from "./commponents/Moments";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,9 +33,7 @@ function App() {
 
         <div className="home relative min-h-screen animate-fadeIn ">
           <AnimatedSection direction="scale" delay={1}>
-            <div class="shadow-dance-container"
-            
-            >
+            <div class="shadow-dance-container">
               <h1 class=" pt-50 shadow-dance-text">CHAKI</h1>
             </div>
           </AnimatedSection>
@@ -90,10 +89,7 @@ function App() {
           {/* Track Cards Section */}
           <AnimatedSection direction="up" delay={0}>
             <div className="mt-8 space-y-4 px-4">
-              <h2
-                className=" text-3xl drop-shadow-[0_0_8px_black]"
-              
-              >
+              <h2 className=" text-3xl drop-shadow-[0_0_8px_black]">
                 Latest Releases
               </h2>
 
@@ -166,50 +162,25 @@ function App() {
             <br />
           </AnimatedSection>
 
-          {/* TikTok Videos Section */}
           <AnimatedSection direction="up" delay={0}>
             <div className="mt-12 p-5">
-              <h2 className=" text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
+              <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
                 Moments
               </h2>
-              <br />
-
-              <Tiktok
+              <Moments
                 videos={[
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png", // fallback image (if needed)
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ", // solid black
-                  },
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
-                  },
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
-                  },
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
-                  },
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
-                  },
-                  {
-                    src: "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
-                    poster: "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1763992784/black_lrjc4m.png",
-                    initialPoster: "https://via.placeholder.com/800x1200/000000/000000?text= ",
-                  },
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1759147216/IMG_2077_cazoag.mp4", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1764662144/IMG_3996_c1mbbr.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450840/IMG_9012_c9u9si.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450471/IMG_9552_fl1n0f.mov", // החלף עם כתובת הסרטון שלך
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450455/IMG_0862_ujhivq.mov",
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450447/IMG_0547_zpcuus.mov",
+                  "https://res.cloudinary.com/dpgnqgyxe/video/upload/v1758450439/IMG_1242_qnusj3.mov",
                 ]}
               />
             </div>
           </AnimatedSection>
+
           <AnimatedSection direction="up" delay={0}>
             <div className="mt-12 ">
               <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black]">
@@ -220,6 +191,7 @@ function App() {
                 images={[
                   // "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451316/IMG_3028_zk3pud.jpg",
                   "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451313/IMG_2967_urtled.jpg",
+                  "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1758451310/IMG_3034_gansdx.jpg",
                   "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451302/IMG_6888_flfivn.jpg",
                   "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451298/IMG_2961_r63yar.jpg",
                   "https://res.cloudinary.com/dpgnqgyxe/image/upload/f_auto,q_auto:good,dpr_auto,w_1200,c_fill,g_auto/v1758451296/IMG_6914_mztdfj.jpg",

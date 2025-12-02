@@ -15,7 +15,7 @@ export default function LetsTalk() {
   // ** החלף בכתובת ה-Webhook שלך מ-N8N **
   // הערה: ודא שכתובת זו משתמשת ב-HTTPS (חובה)
   const WEBHOOK_URL =
-    "http://localhost:5678/webhook-test/50050c20-3e24-4b59-8fe2-d298f86dca50";
+    "http://localhost:5678/webhook-test/5a9a0b08-cc87-4758-bb19-f66312781af7";
 
   // פונקציית עדכון מצב כללית
   const handleChange = (e) => {
