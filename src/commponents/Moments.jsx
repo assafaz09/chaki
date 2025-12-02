@@ -84,6 +84,8 @@ export default function Moments({ videos = [] }) {
   // Handle mouse wheel scrolling (vertical)
   const handleWheel = useCallback(
     (e) => {
+      // Prevent default scrolling to keep scroll only inside the section
+      e.preventDefault();
       e.stopPropagation();
 
       if (isScrolling) return;
@@ -113,8 +115,24 @@ export default function Moments({ videos = [] }) {
     [currentVideoIndex, videoList.length, isScrolling]
   );
 
+  // Set up passive: false for wheel event to allow preventDefault
+  const sectionRef = useRef(null);
+
+  React.useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", handleWheel, { passive: false });
+    };
+  }, [handleWheel]);
+
   return (
-    <div className="w-full max-w-4xl mx-auto h-[600px] overflow-hidden bg-black relative rounded-lg">
+    <div
+      className="w-full max-w-4xl mx-auto h-[600px] overflow-hidden bg-black relative rounded-lg"
+      ref={sectionRef}
+      // Do not set onWheel here, we control wheel listener above
+    >
       {/* Swipe Hint */}
       <div className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/60 text-sm">
         <div className="flex flex-col items-center gap-1">
@@ -130,7 +148,6 @@ export default function Moments({ videos = [] }) {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onWheel={handleWheel}
         style={{ touchAction: "pan-y" }}
       >
         <div

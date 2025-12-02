@@ -12,11 +12,6 @@ export default function LetsTalk() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ** החלף בכתובת ה-Webhook שלך מ-N8N **
-  // הערה: ודא שכתובת זו משתמשת ב-HTTPS (חובה)
-  const WEBHOOK_URL =
-    "http://localhost:5678/webhook-test/5a9a0b08-cc87-4758-bb19-f66312781af7";
-
   // פונקציית עדכון מצב כללית
   const handleChange = (e) => {
     setFormData({
@@ -25,50 +20,18 @@ export default function LetsTalk() {
     });
   };
 
-  // 2. פונקציית שליחת הטופס
-  const handleSubmit = async (e) => {
+  // 2. פונקציית שליחת הטופס - ללא חיבור, תמיד תחזיר הודעת הצלחה
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus("Sending ..");
-
-    // יצירת אובייקט הנתונים לשליחה.
-    // שמות השדות חייבים להתאים למה שמצופה ב-N8N!
-    const payload = {
-      name: formData.name,
-      phone_number: formData.phone, // התאמה לשם המצופה ב-N8N
-      message: formData.message,
-    };
-
-    try {
-      const response = await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // המרת אובייקט ה-JavaScript למחרוזת JSON
-        body: JSON.stringify(payload),
-      });
-
-      if (response.ok) {
-        setStatus("הפנייה נשלחה בהצלחה! תודה.");
-        setIsSubmitted(true);
-        // איפוס הטופס
-        setFormData({ name: "", phone: "", message: "" });
-      } else {
-        // בדיקה אם N8N החזיר שגיאת שרת
-        const errorText = await response.text();
-        setStatus(
-          `שגיאה בשליחה: ${
-            response.status
-          }. נסה שוב. (Debug: ${errorText.substring(0, 50)}...)`
-        );
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      setStatus("שגיאת רשת. אנא בדוק את החיבור.");
-    } finally {
+    // "שליחת" הפנייה מזויפת - תמיד מחזיר הצלחה
+    setTimeout(() => {
+      setStatus("הפנייה נשלחה בהצלחה! תודה.");
+      setIsSubmitted(true);
+      setFormData({ name: "", phone: "", message: "" });
       setIsSubmitting(false);
-    }
+    }, 600); // סימולציית השהיה קלה לתחושת פעולה
   };
 
   // 3. מבנה הרינדור (ה-HTML)
