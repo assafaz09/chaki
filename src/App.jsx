@@ -32,12 +32,67 @@ function App() {
 
         <div className="home relative min-h-screen animate-fadeIn ">
           <AnimatedSection direction="scale" delay={1}>
-            <div class="shadow-dance-container">
-              <h1 class=" pt-50 shadow-dance-text">CHAKI</h1>
+            <div
+              style={{
+                position: "relative",
+                width: "fit-content",
+                margin: "0 auto",
+              }}
+            >
+              <img
+                src="https://res.cloudinary.com/dpgnqgyxe/image/upload/v1764669071/chaki-main-removebg-preview_yc1dtz.png"
+                alt="chaki"
+                style={{
+                  display: "block",
+                  maxWidth: "100%",
+                  height: "auto",
+                  zIndex: 1,
+                  position: "relative",
+                  opacity: 0.25,
+
+                  // --- התוספת החדשה ---
+                  // יצירת גרדיאנט אנכי: שחור למעלה (נראה) -> שקוף למטה (נעלם)
+                  // אנחנו מוסיפים גם את גרסת ה-Webkit עבור תמיכה בדפדפנים כמו כרום וספארי
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 50%, transparent 100%)",
+                  maskImage:
+                    "linear-gradient(to bottom, black 50%, transparent 100%)",
+                  // --------------------
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  height: "48%",
+                  pointerEvents: "none",
+                  zIndex: 2,
+                }}
+              />
+              {/* אפקט מוברש/דוהה מלמטה, ללא פס – משתלב לגמרי ברקע עם fade רחב יותר */}
+            </div>
+            <div
+              className=""
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                top: "75%", // עלה ל-32% מהתמונה
+                zIndex: 3,
+                width: "100%",
+                pointerEvents: "none",
+              }}
+            >
+              <h1 className="shadow-dance-text">CHAKI</h1>
             </div>
           </AnimatedSection>
           <AnimatedSection direction="up" delay={200}>
-            <div className="flex flex-row justify-center gap-10 mt-10px">
+            <div
+              className="flex flex-row justify-center gap-10 mt-10px"
+              style={{ position: "relative", zIndex: 4 }}
+            >
               <a
                 aria-label="Instagram"
                 href="https://www.instagram.com/_onlychaki_/"
