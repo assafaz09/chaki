@@ -166,7 +166,6 @@ function App() {
                   },
                 }}
               />
-              <br />
 
               <TrackCard
                 track={{
@@ -185,6 +184,23 @@ function App() {
                     beatport:
                       "https://beatport.com/release/drumline/5382961?utm_source=ios&utm_content=release&utm_medium=share",
                   },
+                }}
+              />
+              <TrackCard
+                track={{
+                  coverSrc:
+                    "https://res.cloudinary.com/dpgnqgyxe/image/upload/v1765392456/IMG_4623_yhypck.jpg",
+                  title: " Bb trickz - super REMIX",
+                  artists: "CHAKI ",
+                  platforms: {
+                    soundcloud: "https://on.soundcloud.com/08Pgl6ktCbEsrkPaef",
+                  },
+                  comingSoonPlatforms: [
+                    "spotify",
+                    "appleMusic",
+                    "youtubeMusic",
+                    "beatport",
+                  ],
                 }}
               />
             </div>

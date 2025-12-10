@@ -46,6 +46,14 @@ export default function Moments({ videos = [] }) {
   };
 
   const handleTouchMove = (e) => {
+    if (touchStart === null) return;
+    const currentY = e.targetTouches[0].clientY;
+    const deltaY = touchStart - currentY;
+    // If user is swiping, prevent page scroll early
+    if (Math.abs(deltaY) > 5) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setTouchEnd(e.targetTouches[0].clientY);
   };
 
@@ -131,6 +139,8 @@ export default function Moments({ videos = [] }) {
     <div
       className="w-full max-w-4xl mx-auto h-[600px] overflow-hidden bg-black relative rounded-lg"
       ref={sectionRef}
+      // Prevent scroll chaining so the page won't move while swiping inside
+      style={{ overscrollBehavior: "contain" }}
       // Do not set onWheel here, we control wheel listener above
     >
       {/* Swipe Hint */}
@@ -148,7 +158,9 @@ export default function Moments({ videos = [] }) {
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{ touchAction: "pan-y" }}
+        // touchAction none stops the browser from hijacking vertical scroll,
+        // letting us handle swipe without moving the page.
+        style={{ touchAction: "none", overscrollBehavior: "contain" }}
       >
         <div
           className="flex flex-col h-full transition-transform duration-300 ease-out"

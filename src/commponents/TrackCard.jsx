@@ -48,8 +48,9 @@ export default function TrackCard({ track, onPlay }) {
     }
   }, [visible, open]);
 
-  const Row = ({ label, href, icon }) => {
-    const disabled = !href;
+  const Row = ({ label, href, icon, comingSoon = false }) => {
+    const disabled = comingSoon || !href;
+    const buttonLabel = comingSoon ? "Coming soon" : "Play";
     return (
       <div className="flex items-center justify-between border-b  px-4 py-3 last:border-b-0">
         <span className="flex items-center gap-3 text-[15px] font-medium text-black">
@@ -63,7 +64,7 @@ export default function TrackCard({ track, onPlay }) {
             className="button cursor-not-allowed rounded-full border border-black/20 px-4 py-1 text-sm text-black/40"
             aria-disabled="true"
           >
-            Play
+            {buttonLabel}
           </button>
         ) : (
           <a
@@ -149,7 +150,7 @@ export default function TrackCard({ track, onPlay }) {
                 onClick={() => setVisible(false)}
                 className="button ml-auto py-1 text-xs text-white/80 hover:bg-white/10"
               >
-              Close
+                Close
               </button>
             </div>
 
@@ -158,16 +159,19 @@ export default function TrackCard({ track, onPlay }) {
                 icon={<SiSpotify className="text-[#1DB954]" size={20} />}
                 label="Spotify"
                 href={track.platforms?.spotify}
+                comingSoon={track.comingSoonPlatforms?.includes("spotify")}
               />
               <Row
                 icon={<SiApplemusic className="text-black" size={20} />}
                 label="Apple Music"
                 href={track.platforms?.appleMusic}
+                comingSoon={track.comingSoonPlatforms?.includes("appleMusic")}
               />
               <Row
                 icon={<SiYoutubemusic className="text-[#FF0000]" size={20} />}
                 label="YouTube Music"
                 href={track.platforms?.youtubeMusic}
+                comingSoon={track.comingSoonPlatforms?.includes("youtubeMusic")}
               />
               <Row
                 icon={<SiSoundcloud className="text-[#FF5500]" size={20} />}
@@ -178,6 +182,7 @@ export default function TrackCard({ track, onPlay }) {
                 icon={<SiBeatport className="text-[#FF5500]" size={20} />}
                 label="Beatport"
                 href={track.platforms?.beatport}
+                comingSoon={track.comingSoonPlatforms?.includes("beatport")}
               />
             </div>
           </div>
@@ -198,6 +203,7 @@ TrackCard.defaultProps = {
       appleMusic: "",
       youtubeMusic: "",
     },
+    comingSoonPlatforms: [],
   },
   onPlay: () => {},
 };

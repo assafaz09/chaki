@@ -48,7 +48,7 @@ export default function InfiniteCarousel({
     };
   }, [images]);
 
-  // Animation loop
+  // Animation loop (seamless)
   useEffect(() => {
     if (reduceMotion || paused || !contentWidth) return;
 
@@ -57,13 +57,14 @@ export default function InfiniteCarousel({
       const dt = (now - lastTimeRef.current) / 1000;
       lastTimeRef.current = now;
 
+      // Keep offsetRef.current continuous (no modulo) for seamless infinite scroll
       offsetRef.current += speed * dt;
-      if (offsetRef.current >= contentWidth) {
-        offsetRef.current -= contentWidth;
-      }
+      // Apply modulo only to transform display, not to offsetRef itself
+      const displayOffset =
+        ((offsetRef.current % contentWidth) + contentWidth) % contentWidth;
 
       if (contentRef.current) {
-        contentRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+        contentRef.current.style.transform = `translate3d(-${displayOffset}px, 0, 0)`;
       }
 
       frameRef.current = requestAnimationFrame(step);
@@ -77,43 +78,34 @@ export default function InfiniteCarousel({
     };
   }, [paused, speed, contentWidth, reduceMotion]);
 
-  // Reset transform when motion reduced or width changes
+  // Update transform when motion reduced or width changes (without resetting offset)
   useEffect(() => {
-    if (!contentRef.current) return;
-    if (!contentWidth || reduceMotion) {
-      offsetRef.current = 0;
+    if (!contentRef.current || !contentWidth) return;
+    if (reduceMotion) {
+      // Only reset when motion is reduced, but keep offset for when motion resumes
       contentRef.current.style.transform = "translate3d(0, 0, 0)";
       return;
     }
-    offsetRef.current = offsetRef.current % contentWidth;
-    contentRef.current.style.transform = `translate3d(-${offsetRef.current}px, 0, 0)`;
+    // Apply modulo only to transform, keep offsetRef.current continuous
+    const displayOffset =
+      ((offsetRef.current % contentWidth) + contentWidth) % contentWidth;
+    contentRef.current.style.transform = `translate3d(-${displayOffset}px, 0, 0)`;
   }, [contentWidth, reduceMotion]);
 
-  // Pause on scroll/wheel/touchmove/user drag
+  // Pause on scroll/wheel (general page scroll, not carousel drag)
   useEffect(() => {
     function pause() {
       setPaused(true);
       clearTimeout(resumeTimeout.current);
       resumeTimeout.current = setTimeout(() => setPaused(false), 400);
     }
-    const containerEl = containerRef.current;
     window.addEventListener("scroll", pause, { passive: true });
     window.addEventListener("wheel", pause, { passive: true });
-    window.addEventListener("touchmove", pause, { passive: true });
-    if (containerEl) {
-      containerEl.addEventListener("mousedown", pause);
-      containerEl.addEventListener("touchstart", pause);
-      containerEl.addEventListener("scroll", pause);
-    }
+    // Note: mousedown/touchstart on container are handled in manual drag effect
+    // to avoid conflicts with manual dragging
     return () => {
       window.removeEventListener("scroll", pause);
       window.removeEventListener("wheel", pause);
-      window.removeEventListener("touchmove", pause);
-      if (containerEl) {
-        containerEl.removeEventListener("mousedown", pause);
-        containerEl.removeEventListener("touchstart", pause);
-        containerEl.removeEventListener("scroll", pause);
-      }
       clearTimeout(resumeTimeout.current);
     };
   }, []);
@@ -154,64 +146,109 @@ export default function InfiniteCarousel({
   // Render images twice for seamless loop
   const allImages = [...images, ...images];
 
-  // Manual scroll support
+  // Manual drag support
   useEffect(() => {
-    if (!containerRef.current) return;
-    const el = containerRef.current;
+    if (!containerRef.current || !contentRef.current) return;
+    const containerEl = containerRef.current;
+    const contentEl = contentRef.current;
     let isDragging = false;
     let startX = 0;
-    let scrollStart = 0;
+    let dragStartOffset = 0;
+    let hasMoved = false;
 
     function onMouseDown(e) {
+      if (!contentWidth) return;
       isDragging = true;
+      hasMoved = false;
       startX = e.pageX;
-      scrollStart = el.scrollLeft;
+      dragStartOffset = offsetRef.current;
       setPaused(true);
+      // Cancel any pending resume timeout
+      clearTimeout(resumeTimeout.current);
     }
     function onMouseMove(e) {
-      if (!isDragging) return;
+      if (!isDragging || !contentWidth) return;
       const dx = e.pageX - startX;
-      el.scrollLeft = scrollStart - dx;
+      // Only consider it a drag if moved more than 5px
+      if (Math.abs(dx) > 5) {
+        hasMoved = true;
+      }
+      // Update offset continuously without modulo (negative dx means dragging right, positive means dragging left)
+      offsetRef.current = dragStartOffset - dx;
+      // Apply modulo only to transform display to maintain infinite loop visually
+      const displayOffset =
+        ((offsetRef.current % contentWidth) + contentWidth) % contentWidth;
+      // Update transform immediately
+      if (contentEl) {
+        contentEl.style.transform = `translate3d(-${displayOffset}px, 0, 0)`;
+      }
     }
-    function onMouseUp() {
+    function onMouseUp(e) {
+      if (!isDragging) return;
+      // Prevent click if user dragged
+      if (hasMoved) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       isDragging = false;
-      setPaused(false);
+      hasMoved = false;
+      // Resume auto-scroll after a delay
+      clearTimeout(resumeTimeout.current);
+      resumeTimeout.current = setTimeout(() => {
+        setPaused(false);
+      }, 400);
     }
-    el.addEventListener("mousedown", onMouseDown);
+    containerEl.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
     window.addEventListener("mouseup", onMouseUp);
 
     // Touch support
     let touchStartX = 0;
-    let touchScrollStart = 0;
+    let touchDragStartOffset = 0;
     function onTouchStart(e) {
+      if (!contentWidth) return;
       isDragging = true;
       touchStartX = e.touches[0].pageX;
-      touchScrollStart = el.scrollLeft;
+      touchDragStartOffset = offsetRef.current;
       setPaused(true);
+      // Cancel any pending resume timeout
+      clearTimeout(resumeTimeout.current);
     }
     function onTouchMove(e) {
-      if (!isDragging) return;
+      if (!isDragging || !contentWidth) return;
       const dx = e.touches[0].pageX - touchStartX;
-      el.scrollLeft = touchScrollStart - dx;
+      // Update offset continuously without modulo (negative dx means dragging right, positive means dragging left)
+      offsetRef.current = touchDragStartOffset - dx;
+      // Apply modulo only to transform display to maintain infinite loop visually
+      const displayOffset =
+        ((offsetRef.current % contentWidth) + contentWidth) % contentWidth;
+      // Update transform immediately
+      if (contentEl) {
+        contentEl.style.transform = `translate3d(-${displayOffset}px, 0, 0)`;
+      }
     }
     function onTouchEnd() {
+      if (!isDragging) return;
       isDragging = false;
-      setPaused(false);
+      // Resume auto-scroll after a delay
+      clearTimeout(resumeTimeout.current);
+      resumeTimeout.current = setTimeout(() => {
+        setPaused(false);
+      }, 400);
     }
-    el.addEventListener("touchstart", onTouchStart);
+    containerEl.addEventListener("touchstart", onTouchStart);
     window.addEventListener("touchmove", onTouchMove);
     window.addEventListener("touchend", onTouchEnd);
 
     return () => {
-      el.removeEventListener("mousedown", onMouseDown);
+      containerEl.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
-      el.removeEventListener("touchstart", onTouchStart);
+      containerEl.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouchMove);
       window.removeEventListener("touchend", onTouchEnd);
     };
-  }, []);
+  }, [contentWidth]);
 
   return (
     <div
