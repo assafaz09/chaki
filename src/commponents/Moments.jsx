@@ -89,6 +89,47 @@ export default function Moments({ videos = [] }) {
     setIsPlaying(false);
   }, [currentVideoIndex]);
 
+  // Pause videos when they go out of view (using Intersection Observer)
+  React.useEffect(() => {
+    const observers = [];
+
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              // Video is out of view - pause it
+              try {
+                video.pause();
+                // If this was the current playing video, update isPlaying state
+                if (index === currentVideoIndex) {
+                  setIsPlaying(false);
+                }
+              } catch {
+                // Ignore pause errors
+              }
+            }
+            // When video comes back into view, don't auto-play
+            // User needs to click play manually
+          });
+        },
+        {
+          threshold: 0.5, // Consider out of view when less than 50% visible
+          rootMargin: "0px",
+        }
+      );
+
+      observer.observe(video);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, [videoList.length, currentVideoIndex]);
+
   // Handle mouse wheel scrolling (vertical)
   const handleWheel = useCallback(
     (e) => {
