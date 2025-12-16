@@ -178,7 +178,7 @@ export default function Moments({ videos = [] }) {
 
   return (
     <div
-      className="w-full max-w-4xl mx-auto h-[600px] overflow-hidden bg-black relative rounded-lg"
+      className="w-full max-w-2xl mx-auto h-140 overflow-hidden bg-black relative rounded-lg"
       ref={sectionRef}
       // Prevent scroll chaining so the page won't move while swiping inside
       style={{ overscrollBehavior: "contain" }}
