@@ -303,63 +303,56 @@ export default function InfiniteCarousel({
       </div>
       {/* מודאל תמונה */}
       {fullscreenImage && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95"
-          onClick={() => setFullscreenImage(null)}
-        >
-          <div className="relative max-w-4xl w-full max-h-[90vh] p-4 flex items-center justify-center">
-            {(() => {
-              const lower =
-                typeof fullscreenImage === "string"
-                  ? fullscreenImage.toLowerCase()
-                  : "";
-              const isVideo =
-                lower.endsWith(".mp4") ||
-                lower.endsWith(".mov") ||
-                lower.includes("/video/");
-              return isVideo ? (
-                <video
-                  src={fullscreenImage}
-                  className="max-w-full max-h-[80vh] object-contain rounded-lg"
-                  controls
-                  autoPlay
-                  playsInline
-                />
-              ) : (
-                <img
-                  src={fullscreenImage}
-                  alt="Full size carousel image"
-                  className="max-w-full max-h-[80vh] object-contain rounded-lg"
-                />
-              );
-            })()}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setFullscreenImage(null);
-              }}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white text-3xl hover:bg-black/90 transition-colors"
-              aria-label="סגור תמונה"
-            >
-              ✖
-            </button>
-          </div>
-        </div>
-      )}
+  <div
+    className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 pointer-events-none"
+  >
+    <div
+      className="relative max-w-4xl w-full max-h-[90vh] p-4 flex items-center justify-center pointer-events-auto"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {(() => {
+        const lower =
+          typeof fullscreenImage === "string"
+            ? fullscreenImage.toLowerCase()
+            : "";
+        const isVideo =
+          lower.endsWith(".mp4") ||
+          lower.endsWith(".mov") ||
+          lower.includes("/video/");
+        return isVideo ? (
+          <video
+            src={fullscreenImage}
+            className="max-w-full max-h-[80vh] object-contain rounded-lg"
+            controls
+            autoPlay
+            playsInline
+          />
+        ) : (
+          <img
+            src={fullscreenImage}
+            alt="Full size carousel image"
+            className="max-w-full max-h-[80vh] object-contain rounded-lg"
+          />
+        );
+      })()}
+
+      {/* כפתור סגירה */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setFullscreenImage(null);
+        }}
+        className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-black/70 text-white text-3xl hover:bg-black/90 transition-colors"
+        aria-label="סגור תמונה"
+      >
+        ✖
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }
 
-// Usage example:
-{
-  /* 
-<InfiniteCarousel
-  images={[
-    "https://images.unsplash.com/photo-1",
-    "https://images.unsplash.com/photo-2",
-    "https://images.unsplash.com/photo-3",
-    "https://images.unsplash.com/photo-4",
-  ]}
-/>
-*/
-}
+
