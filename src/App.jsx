@@ -233,7 +233,7 @@ function App() {
           </AnimatedSection>
 
           <AnimatedSection direction="up" delay={0}>
-            <div className="mt-12 p-5">
+            <div className="mt-12 p-10">
               <h2 className="text-2xl text-white drop-shadow-[0_0_8px_black] [text-shadow:0_0_16px_black,0_0_24px_black] mb-6 text-center">
                 Moments
               </h2>
